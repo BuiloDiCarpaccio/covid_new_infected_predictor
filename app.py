@@ -4,13 +4,15 @@ import numpy as np
 import os
 import pickle
 import warnings
+import gzip
 
 
 st.set_page_config(page_title="Crop Recommender", page_icon="🌿", layout='centered', initial_sidebar_state="collapsed")
 
 def load_model(modelfile):
-	loaded_model = pickle.load(open(modelfile, 'rb'))
-	return loaded_model
+    with gzip.open(modelfile, 'rb') as f:
+	    loaded_model = pickle.load(f)
+	    return loaded_model
 
 def main():
     # title
@@ -148,12 +150,12 @@ def main():
         
         if st.button('Predict'):
 
-            loaded_model = load_model('covid_model.pkl')
+            loaded_model = load_model('model.pkl')
             prediction = loaded_model.predict(single_pred)
             col1.write('''
 		    ## Results 🔍 
 		    ''')
-            col1.success(f"{prediction.item().title()} new cases are predicted in 7 days by our A.I.")
+            col1.success(f"{prediction.item()} new cases are predicted in 7 days by our A.I.")
 
       #code for html ☘️ 🌾 🌳 👨‍🌾  🍃
 

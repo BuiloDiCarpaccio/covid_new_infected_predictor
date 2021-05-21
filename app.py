@@ -7,11 +7,10 @@ import warnings
 import gzip
 
 
-st.set_page_config(page_title="Crop Recommender", page_icon="🌿", layout='centered', initial_sidebar_state="collapsed")
+st.set_page_config(page_title="New COVID-19 cases predictions", page_icon="😷", layout='centered', initial_sidebar_state="collapsed")
 
-@st.cache
 def load_model(modelfile):
-    with gzip.open(modelfile, 'rb') as f:
+    with open(modelfile, 'rb') as f:
 	    loaded_model = pickle.load(f)
 	    return loaded_model
 
@@ -19,7 +18,7 @@ def main():
     # title
     html_temp = """
     <div>
-    <h1 style="color:MEDIUMSEAGREEN;text-align:left;"> Crop Recommendation  🌱 </h1>
+    <h1 style="color:DARKSALMON;text-align:left;"> New COVID-19 cases predictions  😷 </h1>
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
@@ -120,43 +119,45 @@ def main():
 
 
     with col2:
-        st.subheader(" Find out the most suitable crop to grow in your farm 👨‍🌾")
-        SCHOOL = st.number_input("School", 0,3)
-        WORK = st.number_input("work", 0, 3)
-        EVENTS = st.number_input("Events", 0, 2)
-        GATHERINGS = st.number_input("Gatherings", 0, 4)
-        TRANSPORTATION = st.number_input("Transportation", 0, 2)
-        ATHOME = st.number_input("At Home", 0, 3)
-        NATIONAL = st.number_input("National", 0, 2)
-        INTERNATIONAL = st.number_input("International", 0, 4)
-        INFORMATION= st.number_input("Information", 0, 2)
-        TESTING = st.number_input("Testing", 0, 3)
-        TRACING = st.number_input("Tracing", 0, 3)
-        NEWCASES = st.number_input("New Cases", 0, 300000)
+        st.subheader("Find out how many new COVID-19 cases will happend in 7 days")
+        School = st.number_input("School", 0,3)
+        Work = st.number_input("work", 0, 3)
+        Events = st.number_input("Events", 0, 2)
+        Gatherings = st.number_input("Gatherings", 0, 4)
+        Transportation = st.number_input("Transportation", 0, 2)
+        AtHome = st.number_input("At Home", 0, 3)
+        National = st.number_input("National", 0, 2)
+        International = st.number_input("International", 0, 4)
+        Information= st.number_input("Information", 0, 2)
+        Testing = st.number_input("Testing", 0, 3)
+        Tracing = st.number_input("Tracing", 0, 3)
+        NewCases = st.number_input("New Cases", 5000, 150000)
+        NewDeaths = st.number_input("New Deaths", 0, 2000)
 
 
-        feature_list = [SCHOOL,
-        WORK,
-        EVENTS,
-        GATHERINGS,
-        TRANSPORTATION,
-        ATHOME,
-        NATIONAL,
-        INTERNATIONAL,
-        INFORMATION,
-        TESTING,
-        TRACING, 
-        NEWCASES]
+        feature_list = [School,
+        Work,
+        Events,
+        Gatherings,
+        Transportation,
+        AtHome,
+        National,
+        International,
+        Information,
+        Testing,
+        Tracing, 
+        NewCases,
+        NewDeaths]
         single_pred = np.array(feature_list).reshape(1,-1)
         
         if st.button('Predict'):
 
-            loaded_model = load_model('zip_model.pkl')
+            loaded_model = load_model('5000_full_model.pkl')
             prediction = loaded_model.predict(single_pred)
-            col1.write('''
+            col2.write('''
 		    ## Results 🔍 
 		    ''')
-            col1.success(f"{prediction.item()} new cases are predicted in 7 days by our A.I.")
+            col2.success(f"{prediction.item()} new cases are predicted in 7 days by our A.I.")
 
       #code for html ☘️ 🌾 🌳 👨‍🌾  🍃
 

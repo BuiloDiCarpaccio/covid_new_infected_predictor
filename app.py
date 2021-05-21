@@ -9,6 +9,7 @@ import gzip
 
 st.set_page_config(page_title="Crop Recommender", page_icon="🌿", layout='centered', initial_sidebar_state="collapsed")
 
+@st.cache
 def load_model(modelfile):
     with gzip.open(modelfile, 'rb') as f:
 	    loaded_model = pickle.load(f)

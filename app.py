@@ -121,17 +121,17 @@ def main():
     with col2:
         st.subheader("Find out how many new COVID-19 cases will happend in 7 days")
         School = st.number_input("School", 0,3)
-        Work = st.number_input("work", 0, 3)
+        Work = st.number_input("Work", 0, 3)
         Events = st.number_input("Events", 0, 2)
         Gatherings = st.number_input("Gatherings", 0, 4)
         Transportation = st.number_input("Transportation", 0, 2)
-        AtHome = st.number_input("At Home", 0, 3)
+        AtHome = st.number_input("AtHome", 0, 3)
         National = st.number_input("National", 0, 2)
         International = st.number_input("International", 0, 4)
         Information= st.number_input("Information", 0, 2)
         Testing = st.number_input("Testing", 0, 3)
         Tracing = st.number_input("Tracing", 0, 3)
-        NewCases = st.number_input("New Cases", 1, 500000)
+        NewCases = st.number_input("NewCases", 1, 500000)
 
 
         feature_list = [School,
@@ -145,7 +145,7 @@ def main():
         Information,
         Testing,
         Tracing, 
-        NewCases,]
+        NewCases]
         single_pred = np.array(feature_list).reshape(1,-1)
         
         if st.button('Predict'):

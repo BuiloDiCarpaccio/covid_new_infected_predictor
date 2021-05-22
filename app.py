@@ -152,7 +152,7 @@ def main():
         
         if st.button('Predict'):
 
-            loaded_model = load_model('5000_full_model.pkl')
+            loaded_model = load_model('lr_full_model.pkl')
             prediction = loaded_model.predict(single_pred)
             col2.write('''
 		    ## Results 🔍 

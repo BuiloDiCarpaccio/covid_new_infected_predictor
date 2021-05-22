@@ -131,8 +131,7 @@ def main():
         Information= st.number_input("Information", 0, 2)
         Testing = st.number_input("Testing", 0, 3)
         Tracing = st.number_input("Tracing", 0, 3)
-        NewCases = st.number_input("New Cases", 5000, 150000)
-        NewDeaths = st.number_input("New Deaths", 0, 2000)
+        NewCases = st.number_input("New Cases", 1, 500000)
 
 
         feature_list = [School,
@@ -146,8 +145,7 @@ def main():
         Information,
         Testing,
         Tracing, 
-        NewCases,
-        NewDeaths]
+        NewCases,]
         single_pred = np.array(feature_list).reshape(1,-1)
         
         if st.button('Predict'):

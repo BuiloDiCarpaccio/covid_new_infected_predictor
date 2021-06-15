@@ -6,7 +6,7 @@
 
 
 
-![Screenshot](image/illu.png)
+![Screenshot](images/illu.jpg)
 This application should help countries to predict the number of new covid cases for the next week, and then to choose the most suitable measures to contain the covid propagation.
 
 # [Dataset]()
@@ -27,11 +27,16 @@ This dataset was built by collecting all the information related to the measures
 * **🔬 TRACING** -> Contact tracing policy
 * **🦠 NEW CASES** -> The number of new cases
 
+### [Experiment Results:]()
+ * **Performance Results**
+    * Validation Score: 88.60%
+
+![Screenshot](images/chart.png)
  
 # Demo
 Live Demo: [https://covid-new-infected-predictor.herokuapp.com](https://covid-new-infected-predictor.herokuapp.com)
 
-![Screenshot](image/index.png)
+![Screenshot](images/index.png)
 
 # References
 * This project was built following a very interesting course, the sample repository is : [https://github.com/apolmig/Crop-Recommender](https://github.com/apolmig/Crop-Recommender)

@@ -150,12 +150,12 @@ def main():
         
         if st.button('Predict'):
 
-            loaded_model = load_model('lr_full_model.pkl')
+            loaded_model = load_model('model.pkl')
             prediction = loaded_model.predict(single_pred)
             col2.write('''
 		    ## Results 🔍 
 		    ''')
-            col2.success(f"{prediction.item()} new cases are predicted in 7 days by our A.I.")
+            col2.success(f"{round(prediction.item())} new cases are predicted in 7 days by our A.I.")
 
       #code for html ☘️ 🌾 🌳 👨‍🌾  🍃
 
